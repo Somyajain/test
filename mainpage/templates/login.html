@@ -1,0 +1,34 @@
+{% load static %}
+{% include 'main.html' %}
+{% load crispy_forms_tags %}
+<link rel="stylesheet" href="{% static './css/loginstyle.css' %}">
+
+<br/>
+
+
+<br/>
+
+<br/>
+<div class="center1">
+    <div class="container col-xl-6 col-md-6 col-sm-6">
+        <h3>Log In</h3>
+        <br/>
+            <form action="" method="POST">
+            {%   csrf_token %}
+                {{ form1|crispy }}
+                <input type="submit" class="btn btn-success btn-block" value="Log in"/>
+            </form>
+
+
+    </div>
+</div>
+<br/>
+
+<br/><br/>
+<br/><br/><br/><br/>
+<br/><br/>
+
+<br/><br/>
+{% include "footer.html" %}
+</body>
+</html>

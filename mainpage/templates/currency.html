@@ -1,0 +1,237 @@
+{% load static %}
+{% include 'main.html' %}
+
+<link rel="stylesheet" href="{% static './css/currencypagestyle.css' %}">
+
+{#% iamgefile=kwargs.currencywa+"" %#}
+
+
+<div class="container  alert alert-primary">
+    <div class=" row">
+
+           <img id="coinimage" src="{%  static './img/' %}{{kwargs.currencywa}}image.png"  >
+
+        <h4 id="coinname">coinname</h4>
+
+    </div>
+
+</div>
+<br/>
+<div class="container">
+    <div class="row">
+        <div class="bold1 col-md-2 col-xl-2 col-sm-2">
+            Price:
+        </div>
+        <div class="col-md-2 col-xl-2 col-sm-2">
+            <div id="price">price</div>
+        </div>
+        </div>
+
+        <br/>
+        <div class="row">
+
+        <div class="bold1 col-md-2 col-xl-2 col-sm-2">
+            Percent Change(1hr):
+        </div>
+        <div class=" col-md-2 col-xl-2 col-sm-2">
+            <div id="percent_change_1h">percent_change_1h</div>
+        </div>
+    </div>
+</div>
+
+<br/><br>
+<br/><br>
+<table id="currencydata" class="table">
+  <thead class="thead-dark">
+    <tr>
+        <th>Rank</th>
+        <th>Symbol</th>
+        <th>Price(BTC)</th>
+        <th>Market Cap</th>
+        <th>Total Supply</th>
+        <th>Percent Change</th>
+
+    </tr>
+  </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Alfreds Futterkiste</td>
+        <td>Alfreds Futterkiste</td>
+        <td>Maria Anders</td>
+        <td>Alfreds Futterkiste</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Centro comercial Moctezuma</td>
+        <td>Centro comercial Moctezuma</td>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Centro comercial Moctezuma</td>
+        <td>Centro comercial Moctezuma</td>
+        <td>Ernst Handel</td>
+        <td>Roland Mendel</td>
+        <td>Austria</td>
+      </tr>
+      <tr>
+        <td>Laughing Bacchus Winecellars</td>
+        <td>Yoshi Tannamuri</td>
+        <td>Canada</td>
+      </tr>
+      <tr>
+        <td>Magazzini Alimentari Riuniti</td>
+        <td>Giovanni Rovelli</td>
+        <td>Italy</td>
+      </tr>
+</tbody>
+</table>
+
+<br/><br/>
+<h1>{{ kwargs.currencywa }} Chart</h1>
+
+
+<div class="container">
+    <canvas  id="lineChart" height="400" width="400"></canvas>
+
+</div>
+
+
+
+  <h4 style="padding:20px;" >Recently in news</h4>
+
+  <div id="app">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr><th>News</th><th>Source</th><th>Url</th>
+      </tr>
+
+      <tr v-for="article in articles">
+        <td v-text="article.description">
+        </td>
+
+        <td>
+          <span v-text="article.source.name" alt="" />
+        </td>
+        <td><a v-text="article.url" alt="" /></a>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+<div>
+
+{% if request.user.is_authenticated %}
+<form method="POST" action=".">
+    {% csrf_token %}
+    <p class="alert alert-warning">Add a Comment</p>
+    <div class="form-group container">
+        {{ myformofcomments }}
+    <br/>
+
+    <input type="submit" value="POST">
+
+    </div>
+
+</form>
+
+{% else %}
+
+    <div class="alert alert-danger alert-dismissible container " role="alert">
+        <button type ="button" class="close" data-dismiss="alert" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+
+        </button>
+
+        <p>You must login to comment </p>
+
+
+    </div>
+
+
+        {% endif %}
+<br/><br/>
+<br/><br/>
+
+
+    <div class="container-fluid alert alert-success ">
+
+
+        Comments
+
+
+    </div>
+    </div>
+    <br/>
+
+    <div>
+
+
+        {% for comment in comments %}
+        <div class="container">
+            <div class="card  ">
+                <div class="card-header">
+                     <b> User:</b> {{ comment.user }}
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                  <p>{{ comment.content }}</p>
+                  <footer class="blockquote-footer">{{ comment.timestamp|timesince }} ago</footer>
+                </blockquote>
+                </div>
+
+
+              </div>
+
+        </div>
+
+            <br/>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+
+<script src='{%  static "./js/tabledatacurrency.js" %}' ></script>
+<script src='{%  static "./js/makechart.js" %}' ></script>
+<script type="text/javascript">
+var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        articles:[
+          {'description':'Hello','url':''},
+          {'description':'Hi','url':''},
+        ]
+      },
+      mounted(){
+        console.log('mounted app')
+        s=window.location.pathname.split("/")
+        this.makeNewsRequest(s[2])
+      },
+      methods:{
+        makeNewsRequest(currencyName){
+          var n =  new Date();
+          var y = n.getFullYear();
+          var m = n.getMonth() + 1;
+          var d = n.getDate();
+          var vm = this
+          var url = 'https://newsapi.org/v2/everything?q='+currencyName+'&language=en&from=2018-03-1&to='+y+'-'+m+'-'+d+'&sortBy=popularity&apiKey=1ef4a184745844a8b3ddaf3a0cf081a7';
+          axios.get(url).then(function(result){
+            console.log(result)
+            vm.articles = result.data.articles
+          })
+        }
+    }
+    })
+</script>
+<br/><br/>
+{% include "footer.html" %}
+</body>
+</html>

@@ -1,0 +1,94 @@
+{%  include 'main.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static './css/userpagestyle.css' %}">
+
+<br/><br/><br/>
+<br/>
+<table id="mycryptos" class="table">
+    <thead class="thead-dark">
+        <tr >
+            <th>#</th>
+            <th>Name</th>
+            <th>With me</th>
+            <th>Increase</th>
+            <th>Decrease</th>
+        </tr>
+    </thead>
+    <tr id="1">
+        <td>1</td>
+        <td>Bitcoin</td>
+        <td>{{ userdata1.Bitcoin }}</td>
+        <td><a href="{% url 'increase' currencywa2='Bitcoin'  %}"><img src='{% static "./img/add.png" %}'></a></td>
+        <td><a href="{% url 'decrease' currencywa2='Bitcoin'  %}"><img  src='{% static "./img/subtract.png" %}'></a></td>
+
+    </tr>
+    <tr id="2">
+        <td>2</td>
+        <td>Ethereum</td>
+        <td>{{ userdata1.Ethereum }}</td>
+        <td><a href="{% url 'increase' currencywa2='Ethereum'  %}"><img src='{% static "./img/add.png" %}'></a></td>
+        <td><a href="{% url 'decrease' currencywa2='Ethereum'  %}"><img src='{% static "./img/subtract.png" %}'></a></td>
+
+    </tr>
+        <tr id="3">
+            <td>3</td>
+            <td>Ripple</td>
+            <td>{{ userdata1.Ripple }}</td>
+            <td><a href="{% url 'increase' currencywa2='Ripple'  %}"><img src='{% static "./img/add.png" %}'></a></td>
+            <td><a href="{% url 'decrease' currencywa2='Ripple'  %}"><img  src='{% static "./img/subtract.png" %}'></a></td>
+        </tr>
+    <tr id="4">
+        <td>4</td>
+        <td>Bitcoin Cash</td>
+        <td>{{ userdata1.BitcoinCash }}</td>
+        <td><a href="{% url 'increase' currencywa2='Bitcoin Cash'  %}"><img  src='{% static "./img/add.png" %}'></a></td>
+        <td><a href="{% url 'decrease' currencywa2='Bitcoin Cash'  %}"><img  src='{% static "./img/subtract.png" %}'></a></td>
+</tr>
+    <tr id="5">
+        <td>5</td>
+        <td>Litecoin</td>
+        <td>{{ userdata1.Litecoin }}</td>
+        <td><a href="{% url 'increase' currencywa2='Litecoin'  %}"><img  src='{% static "./img/add.png" %}'></a></td>
+        <td><a href="{% url 'decrease' currencywa2='Litecoin'  %}"><img src='{% static "./img/subtract.png" %}'></a></td>
+    </tr>
+    <tr id="6">
+        <td>6</td>
+        <td>Cardano</td>
+        <td>{{ userdata1.Cardano }}</td>
+        <td><a href="{% url 'increase' currencywa2='Cardano'  %}"><img  src='{% static "./img/add.png" %}'></a></td>
+        <td><a href="{% url 'decrease' currencywa2='Cardano'  %}"><img  src='{% static "./img/subtract.png" %}'></a></td>
+
+    </tr>
+    <tr id="7">
+        <td>7</td>
+        <td>NEO</td>
+        <td>{{ userdata1.NEO }}</td>
+        <td><a href="{% url 'increase' currencywa2='NEO'  %}"><img  src='{% static "./img/add.png" %}'></a></td>
+        <td><a href="{% url 'decrease' currencywa2='NEO'  %}"><img  src='{% static "./img/subtract.png" %}'></a></td>
+
+    </tr>
+    <tr id="8">
+        <td>8</td>
+        <td>Stellar</td>
+        <td>{{ userdata1.Stellar }}</td>
+        <td><a href="{% url 'increase' currencywa2='Stellar'  %}"><img  src='{% static "./img/add.png" %}'></a></td>
+        <td><a href="{% url 'decrease' currencywa2='Stellar'  %}"><img  src='{% static "./img/subtract.png" %}'></a></td>
+    </tr>
+     <tr id="9">
+        <td>9</td>
+        <td>EOS</td>
+        <td>{{ userdata1.EOS }}</td>
+        <td><a href="{% url 'increase' currencywa2='EOS'  %}"><img  src='{% static "./img/add.png" %}'></a></td>
+        <td><a href="{% url 'decrease' currencywa2='EOS'  %}"><img src='{% static "./img/subtract.png" %}'></a></td>
+    </tr>
+
+
+</table>
+
+<script src='{%  static "./js/testjs.js" %}' > </script>
+<script src='{%  static "./js/myjs.js" %}' > </script>
+<br/><br/>
+{% include "footer.html" %}
+
+</body>
+</html>

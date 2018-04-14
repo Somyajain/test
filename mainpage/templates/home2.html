@@ -1,0 +1,121 @@
+{% load static %}
+{% include 'main.html' %}
+<br/><br/><br/>
+
+<!--
+<h1>{# {object_list}}</h1>
+{#% for obj in object_list %#}
+<!--#% #obj.hash %}}<br/>
+{#  { obj.Name }}<br/>
+{#  { obj.MarketCap }}<br/>
+{#  { #obj.Price }}<br/>
+-->
+{#%endfor%#}
+
+
+<table id="cryptotable" class="table">
+    <thead class="thead-dark">
+        <tr >
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Market Cap</th>
+            <th scope="col">Price</th>
+            <th scope="col">Change(24h)</th>
+            <th scope="col">Market Cap</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="1">
+            <th scope="row">1</th>
+            <td>Bitcoin</td>
+            <td>167,910,142,110</td>
+            <td>9,954.22</td>
+            <td>1.55%</td>
+            <td>bbb</td>
+        </tr>
+        <tr id="2">
+            <th scope="row">2</th>
+            <td>Ethereum</td>
+            <td>hi5</td>
+            <td>hi6</td>
+            <td>hi7</td>
+            <td>hi8</td>
+        </tr>
+        <tr id="3">
+            <th scope="row">3</th>
+            <td>Ripple</td>
+            <td>hi5</td>
+            <td>hi6</td>
+            <td>hi7</td>
+            <td>hi8</td>
+            </tr>
+        <tr id="4">
+            <th scope="row">4</th>
+            <td>Bitcoin Cash</td>
+            <td>hi3</td>
+            <td>hi4</td>
+            <td>hi7</td>
+            <td>hi8</td>
+        </tr>
+        <tr id="5">
+            <th scope="row">5</th>
+            <td>Litecoin</td>
+            <td>hi5</td>
+            <td>hi6</td>
+            <td>hi7</td>
+            <td>hi8</td>
+        </tr>
+        <tr id="6">
+            <th scope="row">6</th>
+            <td>Cardano</td>
+            <td>z</td>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+
+        </tr>
+        <tr id="7">
+            <th scope="row">7</th>
+            <td>NEO</td>
+            <td>tt</td>
+            <td>tt</td>
+            <td>tt</td>
+            <td>tt</td>
+
+        </tr>
+        <tr id="8">
+            <th scope="row">8</th>
+            <td>Stellar</td>
+            <td>c</td>
+            <td>c</td>
+            <td>c</td>
+            <td>c</td>
+        </tr>
+        <tr id="9">
+            <th scope="row">9</th>
+            <td>EOS</td>
+            <td>c</td>
+            <td>c</td>
+            <td>c</td>
+            <td>c</td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+<script src='{%  static "./js/makechart2.js" %}' ></script>
+
+<script src='{%  static "./js/myjs2.js" %}' ></script>
+
+
+
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+{% include "footer.html" %}
+</body>
+</html>

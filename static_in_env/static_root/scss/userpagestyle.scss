@@ -1,0 +1,23 @@
+//heig  ht="30" width="30"
+$maxwidth:30px;
+$maxheight:30px;
+#mycryptos{
+  td:nth-child(4) {
+    a{
+      img{
+        max-width:$maxwidth+15px;
+        max-height:$maxheight+15px;
+      }
+    }
+  }
+
+  td:nth-child(5) {
+    a{
+      img{
+        max-width:$maxwidth;
+        max-height:$maxheight;
+      }
+    }
+  }
+
+}
